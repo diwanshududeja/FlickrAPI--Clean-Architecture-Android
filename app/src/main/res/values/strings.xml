@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Flickr App</string>
+
+
+    <string name="empty" />
+
+    <string name="space">\u0020</string>
+    <string name="comaa">\u002C</string>
+    <string name="colon">\u0020:\u0020</string>
+    <string name="next_line">\n</string>
+
+    <string name="button_text">Show Photos</string>
+    <string name="distance_suffix">\u0020m away</string>
+
+
+    <string name="message_empty_response">API response is empty</string>
+
+
+    <string name="network_error">Please check your network connection and try again later</string>
+    <string name="api_issue">Error fetching the data, please try again later</string>
+    <string name="quote">\u0027</string>
+</resources>

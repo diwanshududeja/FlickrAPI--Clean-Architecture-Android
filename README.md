@@ -1,14 +1,12 @@
 # Electrolux Assignment
 
-Showing the Electrolux Photos
-
 Implemented via MVVM using the Google Architectural components LiveData, ViewModel and Coroutines
 
 Dependency Injection (DI) using Dagger
 
 Integrated Kotlin coroutines to handle requests asynchronously.
 
-Used clean architecture
+Used clean architecture with differen well separated layers
 
 JetPack Compose for UI
 

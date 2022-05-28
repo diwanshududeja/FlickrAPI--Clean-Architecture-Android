@@ -4,15 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.demo.flickr.data.DataResult
-import com.demo.flickr.data.vo.PhotoDetail
 import com.demo.flickr.domain.HomeRepository
+import com.demo.flickr.ui.state.HomeScreenState
 import kotlinx.coroutines.*
 
 class HomeViewModel constructor(private val homeRepository: HomeRepository?) : ViewModel() {
-
-
-    val photosList = MutableLiveData<List<PhotoDetail>>()
-    val errorMessage = MutableLiveData<String>()
+    val state =  MutableLiveData<HomeScreenState>()
+    private var searchText :  String = ""
 
     fun getPhotosList(searchTag: String) {
         viewModelScope.launch {
@@ -20,13 +18,22 @@ class HomeViewModel constructor(private val homeRepository: HomeRepository?) : V
         }
     }
 
+    fun changeSearchTextInput(newText: String = ""){
+        searchText = newText
+    }
+
+    fun onSearchClick(){
+        getPhotosList(searchText)
+    }
+
     private suspend fun getDataFromAPI(searchTag: String) {
+        state.postValue(HomeScreenState.Loading)
         when (val dataResult = homeRepository?.loadAPIData(searchTag)) {
             is DataResult.Success -> {
-                photosList.postValue(dataResult.data)
+                state.postValue(HomeScreenState.Images(dataResult.data))
             }
             is DataResult.Error -> {
-                errorMessage.postValue(dataResult.error)
+                state.postValue(HomeScreenState.Error(dataResult.error))
             }
         }
     }

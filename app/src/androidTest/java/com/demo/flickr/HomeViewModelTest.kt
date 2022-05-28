@@ -4,10 +4,13 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import com.demo.flickr.data.DataResult
 import com.demo.flickr.data.source.RemoteDataSourceImpl
 import com.demo.flickr.domain.HomeRepository
+import com.demo.flickr.ui.state.HomeScreenState
 import com.demo.flickr.ui.viewmodel.HomeViewModel
 import com.demo.flickr.util.TestCoroutineRule
+import com.demo.flickr.utils.Constants
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -49,7 +52,7 @@ class HomeViewModelTest {
     @Test
     fun givenServerResponse200_whenFetch_shouldReturnSuccess() {
         testCoroutineRule.runBlockingTest {
-            val response = remoteDataSource.getAPIData("Electrolux")
+            val response = remoteDataSource.getAPIData(Constants.DEFAULT_SEARCH_TAG)
             Assert.assertTrue(response.isSuccessful)
         }
 
@@ -59,16 +62,16 @@ class HomeViewModelTest {
     @Test
     fun givenServerResponseError_whenFetch_shouldReturnError() {
         testCoroutineRule.runBlockingTest {
-            val response = remoteDataSource.getAPIData("Electrolux")
+            val response = remoteDataSource.getAPIData(Constants.DEFAULT_SEARCH_TAG)
             Assert.assertTrue(!response.isSuccessful)
         }
     }
 
 
     @Test
-    fun testPhotosListOutput(){
-        viewModel.photosList.observe({ lifecycle }, {
-            Assert.assertTrue(!it.isNullOrEmpty())
+    fun testPhotosState(){
+        viewModel.state.observe({ lifecycle }, {
+            Assert.assertTrue(it == HomeScreenState.Loading)
         })
     }
 

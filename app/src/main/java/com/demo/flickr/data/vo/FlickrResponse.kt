@@ -10,7 +10,7 @@ data class FlickrResponse(
 @Keep
 data class PhotoDetail(
     var id: String? = null,
-    val url_m: String? = null,
+    var url_m: String? = null,
     val title: String? = null
 )
 

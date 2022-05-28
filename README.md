@@ -12,7 +12,7 @@ Used clean architecture
 
 JetPack Compose for UI
 
-# Remaining
+## Remaining
 Some tasks are remaining due to time constraint but you will get to know the architecture that I have used.
 
 KMM -> I am beginner in this. So, not intgreated here but having petty much idea.

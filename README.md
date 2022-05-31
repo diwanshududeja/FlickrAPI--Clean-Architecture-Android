@@ -1,4 +1,4 @@
-# Electrolux Assignment
+# Clean Architecture POC
 
 Implemented via MVVM using the Google Architectural components LiveData, ViewModel and Coroutines
 

@@ -6,16 +6,10 @@ Dependency Injection (DI) using Dagger
 
 Integrated Kotlin coroutines to handle requests asynchronously.
 
-Used clean architecture with differen well separated layers
+Used clean architecture with different well separated layers
 
 JetPack Compose for UI
 
-## Remaining
-Some tasks are remaining due to time constraint but you will get to know the architecture that I have used.
-
-KMM -> I am beginner in this. So, not intgreated here but having petty much idea.
-
-Image Detail -> Not integarted as I can't work further in this due to personal commitments.
 
 ## Introduction
 A sample app which shows the list of photos with Flickr Search. Added search functionality as well.
